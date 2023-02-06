@@ -1,1 +1,1 @@
-web: gunicorn gclin.wsgi --log-file -
+web: gunicorn gclin.wsgi
