@@ -26,6 +26,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*', "chrome-extension://theIDofYourExtension"]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-e1d6.up.railway.app/'
+]
+
 # Application definition
 
 INSTALLED_APPS = [
