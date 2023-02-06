@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+      <div class="card-body">
+        <h3>Editando Paciente</h3>
+        <hr>
+          <form action="{% url 'paciente_edit' paciente %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">SALVAR</button>
+            <a href="{% url 'paciente' %}" class="btn btn-danger">VOLTAR</a>
+          </form>
+      </div>
+    </div>
+{% endblock%}

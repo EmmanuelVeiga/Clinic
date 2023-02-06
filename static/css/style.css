@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+html, body {
+	font-size: 'Roboto', sans-serif;
+	font-size: 95%;
+}
+
+
+.article {
+	column-count: 3;
+	column-gap: 3rem;
+	column-rule: 5px, ;
+}

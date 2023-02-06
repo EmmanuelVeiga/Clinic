@@ -1,0 +1,104 @@
+{% load static %}
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Cadastro do Paciente</title>
+    <style>
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            line-height: 3pt;
+          }
+          td {
+            padding: 4px;
+            text-align: left;
+          }
+    </style>
+  </head>
+  <body>
+    <img src="static/LogoLeandro.jpg" alt="">
+    <h2 align="center">DADOS DO PACIENTE</h2>
+    <hr size="1">
+    <br>
+    <table>
+        <tr>
+            <td><b>Nome:</b> {{paciente.Nome}}</td>
+            <td><b>Estado Civil:</b> {{paciente.Estado_Civil}}</td>
+            <td><b>Bairro:</b> {{paciente.Bairro}}</td>
+        </tr>
+        <tr>
+            <td><b>CPF:</b> {{paciente.CPF}}</td>
+            <td><b>Religião:</b> {{paciente.Religião}}</td>
+            <td><b>Cidade:</b> {{paciente.Cidade}}</td>
+        </tr>
+        <tr>
+            <td><b>Nascimento:</b> {{paciente.Data_Nascimento}}</td>
+            <td><b>Profissão:</b> {{paciente.Profissão}}</td>
+            <td><b>Estado:</b> {{paciente.Estado}}</td>
+        </tr>
+        <tr>
+            <td><b>Naturalidade:</b> {{paciente.Naturalidade}}</td>
+            <td><b>Telefone:</b> {{paciente.Telefone}}</td>
+            <td><b>Convênio:</b> {{paciente.Convênio}}</td>
+          </tr>
+          <tr>
+            <td><b>Estado Nascimento:</b> {{paciente.Estado_Nascimento}}</td>
+            <td><b>Cep:</b> {{paciente.Cep}}</td>
+            <td><b>Plano:</b> {{paciente.Plano}}</td>
+          </tr>
+          <tr>
+            <td><b>Nome da Mãe:</b> {{paciente.Mãe}}</td>
+            <td><b>Rua/Av:</b> {{paciente.Rua_avenida}}</td>
+            <td><b>Cartão:</b> {{paciente.Cartão}}</td>
+          </tr>
+        <tr>
+            <td><b>Nome do Pai:</b> {{paciente.Pai}}</td>
+            <td><b>Número:</b> {{paciente.Número}}</td>
+            <td><b>Vencimento:</b> {{paciente.Data_vencimento}}</td>
+          </tr>
+          <tr>
+            <td><b>Gênero:</b> {{paciente.Gênero}}</td>
+            <td><b>Complemento:</b> {{paciente.Complemento}}</td>
+          </tr>
+    </table>
+
+    <br>
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+    <br>
+    <hr size="0">
+
+
+  </body>
+</html>

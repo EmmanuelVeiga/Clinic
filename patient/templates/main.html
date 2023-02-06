@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Pacientes
+{% endblock title %}
+
+{% block content %}
+    {% for paciente in object_list %}
+        {{paciente}}
+        <a href="{% url 'paciente_pdf_view' paciente.pk %}"><button class="btn-btn-primary">pfd</button></a>
+        <hr>
+    {% endfor %}
+{% endblock content%}

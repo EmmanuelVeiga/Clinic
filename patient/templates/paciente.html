@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <title>Lista de Pacientes</title>
+    <div class="card-body">
+        <h4 align="Center">PACIENTES</h4>
+        <hr>
+        <a class="btn btn-success" href="{% url 'paciente_add' %}">NOVO</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>CPF</th>
+                    <th>Convênio</th>
+                    <th>Plano</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente.Nome }}</td>
+                        <td>{{ paciente.Telefone }}</td>
+                        <td>{{ paciente.CPF }}</td>
+                        <td>{{ paciente.Convênio }}</td>
+                        <td>{{ paciente.Plano }}</td>
+                        <td>
+                            <a href="{% url 'paciente_edit' paciente.id %}" class="btn btn-warning">Editar</a>
+                            <a href="{% url 'paciente_pdf_view' paciente.pk %}"><button class="btn btn-primary"
+                            >Imprimir</button></a>
+                            <a href="{% url 'paciente_delete' paciente.id %}" class="btn btn-danger"
+                            onclick="return confirm('Tem certeza que deseja excluir esse paciente?')">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock%}

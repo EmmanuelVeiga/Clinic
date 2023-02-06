@@ -1,0 +1,1 @@
+web: gunicorn gclin.wsgi --log-file -
