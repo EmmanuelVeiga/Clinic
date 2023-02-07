@@ -70,7 +70,7 @@ def render_pdf_view(request):
 def home(request):
     return render(request, 'home.html')
 
-
+@login_required
 def paciente(request):
     pacientes = Paciente.objects.all()
     context = {
@@ -78,7 +78,7 @@ def paciente(request):
     }
     return render(request, 'paciente.html', context)
 
-
+@login_required
 def paciente_add(request):
     form = PacienteForm(request.POST or None)
     if request.POST:
@@ -90,7 +90,7 @@ def paciente_add(request):
     }
     return render(request, 'paciente_add.html', context)
 
-
+@login_required
 def paciente_edit(request, paciente_pk):
     paciente = Paciente.objects.get(pk=paciente_pk)
     form = PacienteForm(request.POST or None, instance=paciente)
@@ -106,7 +106,7 @@ def paciente_edit(request, paciente_pk):
     }
     return render(request, 'paciente_edit.html', context)
 
-
+@login_required
 def paciente_delete(request, paciente_pk):
     paciente = Paciente.objects.get(pk=paciente_pk)
     paciente.delete()
