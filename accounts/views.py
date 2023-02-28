@@ -1,9 +1,15 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
+from .forms import CustonLoginForm
 from .admin import CustomUserCreationForm
 from django.contrib import messages
 
 
-# Create your views here.
+class CustomLoginView(LoginView):
+    template_name = 'registration/login.html'
+    authentication_form = CustonLoginForm
+
+
 def register(request):
     form = CustomUserCreationForm()
     if request.method == "POST":
@@ -20,3 +26,5 @@ def register(request):
             print('invalid registration details')
 
     return render(request, "registration/register.html", {"form": form})
+
+

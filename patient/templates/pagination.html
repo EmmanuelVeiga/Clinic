@@ -1,0 +1,17 @@
+<div class="pagination">
+    <span class="step-links">
+        {% if pacientes.has_previous %}
+            <a href="?page=1">início</a>
+            <a href="?page={{ pacientes.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ pacientes.number }} of {{ pacientes.paginator.num_pages }}.
+        </span>
+
+        {% if pacientes.has_next %}
+            <a href="?page={{ pacientes.next_page_number }}">próximo</a>
+            <a href="?page={{ pacientes.paginator.num_pages }}">voltar</a>
+        {% endif %}
+    </span>
+</div>
