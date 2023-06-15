@@ -11,6 +11,9 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
+from datetime import date
+from dateutil import parser
+
 
 @login_required
 class PacienteListView(ListView):
@@ -21,6 +24,8 @@ class PacienteListView(ListView):
 def paciente_render_pdf_view(request, *args, **kwargs):
     pk = kwargs.get('pk')
     paciente = get_object_or_404(Paciente, pk=pk)
+
+    paciente.Idade = gera_idade_paciente(paciente.Data_Nascimento)
 
     template_path = 'pdf1.html'
     context = {'paciente': paciente}
@@ -71,6 +76,24 @@ def render_pdf_view(request):
 def home(request):
     return render(request, 'home.html')
 
+# Idade atual do paciente
+def gera_idade_paciente(data_nascimento):
+    data_atual = date.today()
+    ano_atual = data_atual.year
+    mes_atual = data_atual.month
+    dia_atual = data_atual.day
+
+    data_convertida = parser.parse(str(data_nascimento))
+    data_nascimento = '{ano}-{mes}-{dia}'.format(ano = data_convertida.year, mes = data_convertida.month, dia = data_convertida.day)
+
+    ano_nascimento, mes_nascimento, dia_nascimento = map(str, data_nascimento.split('-'))
+
+    idade = ano_atual - int(ano_nascimento)
+
+    if (mes_atual, dia_atual) < (int(mes_nascimento), int(dia_nascimento)):
+        idade -= 1
+
+    return idade
 
 #Listagem
 @login_required
