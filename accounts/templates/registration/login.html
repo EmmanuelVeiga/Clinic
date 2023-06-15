@@ -1,28 +1,70 @@
-{% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
-
-{% block content %}
-
-<div class="col-md-4" >
-    <form method="post">
-        {% csrf_token %}
-
-        <div class="mb-3">
-            <label class="form-label" for="id_username">Usuário:</label>
-            <input type="text" name="username" class="form-control">
-        </div>
-        
-        <div class="mb-3">
-            <label class="form-label" for="id_password">Senha:</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-
-        <button class="btn btn-warning" type="submit">Entrar</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tela de Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .green-box {
+      background-color: #04B883;
+      flex: 0 0 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo {
+      max-width: 600px;
+      margin-right: 20px;
+    }
+    .login-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-input {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .login-button {
+      background-color: #3CB371;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      max-width: 200px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="green-box">
+      <img class="logo" src="/static/Logo.png" alt="Logo">
+    </div>
+    <form class="login-form" method="POST">
+              {% csrf_token %}
+      <h1>Faça login</h1>
+      <input class="login-input" type="text" name="username" placeholder="Nome de usuário">
+      <input class="login-input" type="password" name="password" placeholder="Senha">
+      <button class="login-button" type="submit">Entrar</button>
     </form>
-    
-    <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
-</div>
-
-
-{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 
@@ -70,13 +71,34 @@ def render_pdf_view(request):
 def home(request):
     return render(request, 'home.html')
 
+
+#Listagem
 @login_required
 def paciente(request):
     pacientes = Paciente.objects.all()
     context = {
         'pacientes': pacientes
     }
-    return render(request, 'paciente.html', context)
+    paginator = Paginator(pacientes, 15)
+    page_number = request.GET.get('page')
+    pacientes = paginator.get_page(page_number)
+    return render(request, 'paciente.html', {'pacientes': pacientes})
+
+
+#Campo de Busca
+@login_required
+def paciente(request):
+    search_query = request.GET.get('search', '')
+    if search_query:
+        pacientes = Paciente.objects.filter(Nome__icontains=search_query)
+    else:
+        pacientes = Paciente.objects.all()
+    context = {
+        'pacientes': pacientes,
+        'search_query': search_query,
+    }
+    return render(request, 'paciente.html', {'pacientes': pacientes})
+
 
 @login_required
 def paciente_add(request):
@@ -89,6 +111,7 @@ def paciente_add(request):
         'form': form
     }
     return render(request, 'paciente_add.html', context)
+
 
 @login_required
 def paciente_edit(request, paciente_pk):
@@ -105,6 +128,7 @@ def paciente_edit(request, paciente_pk):
         'paciente': paciente.id,
     }
     return render(request, 'paciente_edit.html', context)
+
 
 @login_required
 def paciente_delete(request, paciente_pk):

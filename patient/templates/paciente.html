@@ -7,9 +7,21 @@
     <div class="card-body">
         <h4 align="Center">PACIENTES</h4>
         <hr>
+<<<<<<< HEAD
   <!--              <div class="form-outline mb-4">
                     <input type="text" class="form-control"  placeholder="Pesquisar" name="search" id="search">
                 </div> -->
+=======
+        <form method="GET" class="search-form">
+           <div class="form-outline mb-4">
+               <input type="text" class="form-control"  placeholder="Pesquisar" name="search" id="search">
+           </div>
+        </form>
+
+        {% if search_query %}
+            <h2> Result for " {{ search_query }}"</h2>
+        {% endif %}
+>>>>>>> 0a82663ea12eaa805aa8fbc1e762d9770c49c9ab
         <hr>
         <a class="btn btn-success float-right" href="{% url 'paciente_add' %}">NOVO</a>
         <br>
@@ -34,16 +46,16 @@
                         <td>{{ paciente.Convênio }}</td>
                         <td>{{ paciente.Plano }}</td>
                         <td>
-                            <a href="{% url 'paciente_edit' paciente.id %}" class="btn btn-warning">Editar</a>
-                            <a href="{% url 'paciente_pdf_view' paciente.pk %}"><button class="btn btn-primary"
-                            >Imprimir</button></a>
-                            <a href="{% url 'paciente_delete' paciente.id %}" class="btn btn-danger"
-                            onclick="return confirm('Tem certeza que deseja excluir esse paciente?')">Excluir</a>
+                            <a href="{% url 'paciente_edit' paciente.id %}" style="color: #ff9944"  class="fa-regular fa-pen-to-square"></a>
+                            <a href="{% url 'paciente_pdf_view' paciente.pk %}" style="color: #0048ba" class="fa-regular fa-print"></a>
+                            <a href="{% url 'paciente_delete' paciente.id %}" style="color: #ec471d" class="fa-regular fa-trash-can"
+                            onclick="return confirm('Tem certeza que deseja excluir esse paciente?')"></a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        {% include 'pagination.html' %}
     </div>
 </div>
 {% endblock%}
