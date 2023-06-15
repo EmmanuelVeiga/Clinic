@@ -43,3 +43,4 @@ urllib3==1.26.14
 virtualenv==20.17.1
 webencodings==0.5.1
 xhtml2pdf==0.2.9
+fontawesomefree==6.4.0
