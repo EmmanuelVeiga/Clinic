@@ -5,5 +5,4 @@ from accounts import views
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
     path('register', views.register, name='register'),
-
 ]
