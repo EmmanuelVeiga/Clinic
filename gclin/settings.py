@@ -24,9 +24,9 @@ SECRET_KEY = 'django-insecure-*r1=c!&8$7)z$dsw!3zhnzm#y7s@r$dm7rs0te68hq@*#4#7u#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-e1d6.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['web-production-e1d6.up.railway.app', 'web-production-069b3.up.railway.app', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-e1d6.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-e1d6.up.railway.app', 'https://web-production-069b3.up.railway.app']
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'patient.apps.PatientConfig',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'gclin.urls'
@@ -121,11 +123,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 MEDIA = '/media/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -133,3 +135,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/paciente/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
