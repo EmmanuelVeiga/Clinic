@@ -7,7 +7,6 @@
     <div class="card-body">
         <h4 align="Center">PACIENTES</h4>
         <hr>
-<<<<<<< HEAD
         <form method="GET" class="search-form">
            <div class="form-outline mb-4">
                <input type="text" class="form-control"  placeholder="Pesquisar" name="search" id="search">
@@ -17,11 +16,7 @@
         {% if search_query %}
             <h2> Result for " {{ search_query }}"</h2>
         {% endif %}
-=======
-  <!--              <div class="form-outline mb-4">
-                    <input type="text" class="form-control"  placeholder="Pesquisar" name="search" id="search">
-                </div> -->
->>>>>>> 5def1ef64927a0e3bbd65b47bfb6bdc83253126f
+
         <hr>
         <a class="btn btn-success float-right" href="{% url 'paciente_add' %}">NOVO</a>
         <br>
