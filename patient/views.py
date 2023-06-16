@@ -99,18 +99,22 @@ def gera_idade_paciente(data_nascimento):
 @login_required
 def paciente(request):
     pacientes = Paciente.objects.all()
+
     context = {
         'pacientes': pacientes
     }
-    paginator = Paginator(pacientes, 15)
-    page_number = request.GET.get('page')
-    pacientes = paginator.get_page(page_number)
+    
+    pacientes = pagination(request, pacientes, 3)
+
+    if (request.GET.get('search', '')):
+        return busca_paciente(request)
+    
     return render(request, 'paciente.html', {'pacientes': pacientes})
 
 
 #Campo de Busca
 @login_required
-def paciente(request):
+def busca_paciente(request):
     search_query = request.GET.get('search', '')
     if search_query:
         pacientes = Paciente.objects.filter(Nome__icontains=search_query)
@@ -120,8 +124,17 @@ def paciente(request):
         'pacientes': pacientes,
         'search_query': search_query,
     }
+
+    pacientes = pagination(request, pacientes, 1)
+
     return render(request, 'paciente.html', {'pacientes': pacientes})
 
+def pagination(request, pacientes, per_page = 3):
+    paginator = Paginator(pacientes, per_page)
+    page_number = request.GET.get('page')
+    pacientes = paginator.get_page(page_number)
+    
+    return pacientes
 
 @login_required
 def paciente_add(request):
