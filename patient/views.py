@@ -120,6 +120,7 @@ def busca_paciente(request):
         pacientes = Paciente.objects.filter(Nome__icontains=search_query)
     else:
         pacientes = Paciente.objects.all()
+    
     context = {
         'pacientes': pacientes,
         'search_query': search_query,
@@ -127,7 +128,7 @@ def busca_paciente(request):
 
     pacientes = pagination(request, pacientes, 1)
 
-    return render(request, 'paciente.html', {'pacientes': pacientes})
+    return render(request, 'paciente.html', {'pacientes': pacientes, 'search_query': search_query})
 
 def pagination(request, pacientes, per_page = 3):
     paginator = Paginator(pacientes, per_page)

@@ -1,8 +1,13 @@
 <div class="pagination">
     <span class="step-links">
         {% if pacientes.has_previous %}
-            <a href="?page=1">início</a>
-            <a href="?page={{ pacientes.previous_page_number }}">anterior</a>
+            {% if search_query %}
+                <a href="?search={{ search_query }}&page=1">início</a>
+                <a href="?search={{ search_query }}&page={{ pacientes.previous_page_number }}">anterior</a>
+            {% else %}
+                <a href="?page=1">início</a>
+                <a href="?page={{ pacientes.previous_page_number }}">anterior</a>
+            {% endif %}
         {% endif %}
 
         <span class="current">
@@ -10,8 +15,13 @@
         </span>
 
         {% if pacientes.has_next %}
-            <a href="?page={{ pacientes.next_page_number }}">próximo</a>
-            <a href="?page={{ pacientes.paginator.num_pages }}">voltar</a>
+            {% if search_query %}
+                <a href="?search={{ search_query }}&page={{ pacientes.next_page_number }}">próximo</a>
+                <a href="?search={{ search_query }}&page={{ pacientes.paginator.num_pages }}">voltar</a>
+            {% else %}
+                <a href="?page={{ pacientes.next_page_number }}">próximo</a>
+                <a href="?page={{ pacientes.paginator.num_pages }}">voltar</a>
+            {% endif %}
         {% endif %}
     </span>
 </div>
